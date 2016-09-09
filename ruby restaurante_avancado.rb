@@ -20,6 +20,19 @@ class Franquia
 			yield r
 		end
 	end
+
+	def expandir(restaurante)
+		def restaurante.cadastrar_vips
+			puts "Restaurante #{self.nome} agora com área VIP!"
+		end
+	end
+
+	def method_missing(name, *args)
+		@restaurantes.each do |r|
+			return "O restaurante #{r.nome} já foi cadastrado." if r.nome.eql? *args
+		end
+		return "O restaurante #{args[0]} não foi cadastrado ainda."
+	end
 end
 
 class Restaurante
@@ -43,3 +56,9 @@ franquia.adiciona restaurante_um, restaurante_dois
 franquia.relatorio do |r|
 	puts "Restaurante cadastrado: #{r.nome}"
 end
+
+franquia.expandir restaurante_um
+restaurante_um.cadastrar_vips
+
+puts franquia.ja_cadastrado?("Kenai")
+puts franquia.ja_cadastrado?("Carol")

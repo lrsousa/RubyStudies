@@ -17,6 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: postgres
+  password: kenai666
+  host: localhost
+  port: 5432
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -24,23 +28,11 @@ default: &default
 development:
   <<: *default
   database: vota_prato_development
-  username: postgres
-  password: kenai666
-  host: localhost
-  port: 5432
 
 test:
   <<: *default
   database: vota_prato_test
-  username: postgres
-  password: kenai666
-  host: localhost
-  port: 5432
 
 production:
   <<: *default
   database: vota_prato_production
-  username: postgres
-  password: kenai666
-  host: localhost
-  port: 5432

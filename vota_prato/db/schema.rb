@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911154912) do
+ActiveRecord::Schema.define(version: 20160912010504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20160911154912) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comentarios", force: :cascade do |t|
+    t.text     "conteudo"
+    t.integer  "comentavel_id"
+    t.string   "comentavel_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comentarios", ["comentavel_id"], name: "index_comentarios_on_comentavel_id", using: :btree
+  add_index "comentarios", ["comentavel_type"], name: "index_comentarios_on_comentavel_type", using: :btree
 
   create_table "pratos", force: :cascade do |t|
     t.string   "nome",       limit: 80

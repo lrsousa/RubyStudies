@@ -10,6 +10,8 @@ class Restaurante < ActiveRecord::Base
 	validates_uniqueness_of :endereco, message: "Endereco já cadastrado"
 
 	validate :primeira_letra_deve_ser_maiuscula
+
+	has_many :comentarios, as: :comentavel
 	
 	private
 	def primeira_letra_deve_ser_maiuscula

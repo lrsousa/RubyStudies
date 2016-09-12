@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  VotaPrato::Application.routes.draw do
-    match 'ola' => 'ola_mundo#index', via: 'get'
-  end
-
   resources :restaurantes
+  resources :qualificacoes
+  resources :clientes
+  
+  match 'ola' => 'ola_mundo#index', via: 'get'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

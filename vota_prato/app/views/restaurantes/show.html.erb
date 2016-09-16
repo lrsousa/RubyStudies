@@ -20,6 +20,9 @@
 	<b>Preço médio: <%= @restaurante.qualificacoes.average(:valor_gasto) %></b>
 </p>
 
+<%= comentarios @restaurante %>
+<%= novo_comentario @restaurante %>
+
 <%= link_to "Qualificar este restaurante", controller: "qualificacoes", action: "new", restaurante: @restaurante %>
 
 <%= link_to 'Editar', action: 'edit', id: @restaurante %>

@@ -1,10 +1,6 @@
 module ApplicationHelper
   def valor_formatado(number)
-    number_to_currency number,
-                        unit: "R$",
-                        seperator: ",",
-                        delimiter: "."
-
+    number_to_currency number, unit: "R$", seperator: ",", delimiter: "."
   end
 
   def novo_comentario(comentavel)
@@ -15,5 +11,9 @@ module ApplicationHelper
   def comentarios(comentavel)
     render partial: "comentarios/comentarios",
                   locals: {comentarios: comentavel.comentarios}
+  end
+
+  def menu_principal(controllers)
+    render partial: "layouts/menu_principal", locals: {opcoes: controllers}
   end
 end

@@ -28,6 +28,7 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
+        format.js
         format.html { redirect_to @comentario, notice: 'Comentario was successfully created.' }
         format.json { render :show, status: :created, location: @comentario }
       else
@@ -59,6 +60,8 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
         format.js {head :ok}
+        format.html { redirect_to comentarios_url, notice: 'Comentario was successfully destroyed.' }
+        format.json { head :no_content }
     end
   end
 

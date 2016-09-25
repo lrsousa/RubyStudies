@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   resources :restaurantes
   resources :qualificacoes
   resources :clientes
-  
+
   match 'ola' => 'ola_mundo#index', via: 'get'
 
-  
+  get 'busca/:nome' => 'restaurantes#busca'
+
+  match 'rack', via: 'get', :to => proc{|env| [200, {"Content-Type" => "text/html"},["App Rack numa rota Rails"]]}
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

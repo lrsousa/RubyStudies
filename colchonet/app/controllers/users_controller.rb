@@ -18,6 +18,19 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit
+        @user = User.find(params[:id])
+    end
+
+    def update
+        @user = User.new(params[:id])
+        if @user.update_attributes(params[:user])
+            redirect_to @user, :notice => 'Cadastro atualizado com sucesso!'
+        else
+            render :update
+        end
+    end
+
     private
     def user_params
         params.require(:user).permit(:full_name, :location, :email, :password, :password_confirmation, :bio)

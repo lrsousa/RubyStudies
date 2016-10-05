@@ -23,11 +23,12 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.new(params[:id])
-        if @user.update_attributes(params[:user])
+        @user = User.find(params[:id])
+        puts @user.valid?
+        if @user.update(user_params)
             redirect_to @user, :notice => 'Cadastro atualizado com sucesso!'
         else
-            render :update
+            render :edit
         end
     end
 

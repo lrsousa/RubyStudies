@@ -39,6 +39,8 @@ pt-BR:
     destroy: 'Você tem certeza que quer remover?'
 
   users:
+    confirmations:
+      success: Email confirmado com sucesso, obrigado!
     new:
       title: Cadastro
     edit:

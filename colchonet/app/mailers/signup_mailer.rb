@@ -3,7 +3,10 @@ class SignupMailer < ActionMailer::Base
 
     def confirm_email(user)
         @user = user
-        @confirmation_link = root_url
+        @confirmation_link = confirmation_url({
+                    token: @user.confirmation_token,
+                    locale: "pt-BR"
+        })
 
         mail({
             :to => user.email,

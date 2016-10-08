@@ -1,32 +1,29 @@
-<%= form_for(room) do |f| %>
-  <% if room.errors.any? %>
+<% if @room.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
-
-      <ul>
-      <% room.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        Há erros no formulário, por favor verifique.
     </div>
-  <% end %>
+<% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<%= form_for @room do |f| %>
+    <p>
+        <%= f.label :title %> <br />
+        <%= f.text_field :title %>
+        <%= error_tag @room, :title %>
+    </p>
 
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
+    <p>
+        <%= f.label :location %> <br />
+        <%= f.text_field :location %>
+        <%= error_tag @room, :location %>
+    </p>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
+    <p>
+        <%= f.label :description %> <br />
+        <%= f.text_field :description %>
+        <%= error_tag @room, :description %>
+    </p>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
 <% end %>

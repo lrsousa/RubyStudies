@@ -81,6 +81,10 @@ pt-BR:
 
   links:
     back: Voltar
+    new: Novo
+    show: Mostrar
+    edit: Editar
+    destroy: Deletar
 
   activerecord:
     models:

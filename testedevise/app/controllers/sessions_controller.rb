@@ -5,36 +5,26 @@ class SessionsController < Devise::SessionsController
   end
 
   def create
+    @user = get_document_type params
 
-    new_param = create_new_hash! params
-
-    puts new_param.inspect
-
-
-
+    if @user.valid_password?(params[:user][:password])
+      sign_in(@user)
+      redirect_to root_path, alert: "Logado com sucesso!"
+    else
+      redirect_to root_path, alert: "Senha invalida!"
+    end
   end
 
   private
 
-  def create_new_hash!(params)
-    new_param = {"utf8": params[:utf8],
-      "authenticity_token": params[:authenticity_token],
-      "user": {
-        "password": params[:user][:password],
-        "remember_me": params[:user][:remember_me],
-      },
-      "#{get_document_type params}": params[:documento],
-      "commit": params[:commit]
-    }
-  end
-
   def get_document_type(params)
+    user = nil
     if params[:documento].length == 11
-      puts "LOGIN COM CPF"
-      "cpf"
+      puts "user"
+      user = User.find_for_authentication(cpf: params[:documento])
     elsif params[:documento].length == 14
-      puts "LOGIN COM CNPJ"
-      "cnpj"
+      puts "admin"
+      user = Admin.find_for_authentication(cnpj: params[:documento])
     end
   end
 

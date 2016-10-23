@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="users">
+    <%= render @users %>
+  </tbody>
+</table>
+
+<div id="paginator">
+  <%= paginate @users, :remote => true %>
+</div>

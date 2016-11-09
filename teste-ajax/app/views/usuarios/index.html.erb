@@ -1,0 +1,21 @@
+<h1>Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center;">Nome</th>
+      <th style="text-align: center;">Idade</th>
+      <th style="text-align: center;">Ativado</th>
+      <th style="text-align: center;">Opcao</th>
+    </tr>
+  </thead>
+  <tbody id="users">
+    <%= render @usuarios %>
+  </tbody>
+</table>
+
+<script>
+$('.alterar-status').bind('ajax:success', function(status, response) {
+  $(this).replaceWith(response);
+});
+</script>

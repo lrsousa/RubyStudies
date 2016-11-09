@@ -1,0 +1,19 @@
+<tr class="alterar-status" id="linha_<%= usuario.id %>">
+  <td><%= usuario.nome %></td>
+  <td><%= usuario.idade %></td>
+  <td><%= usuario.ativado %></td>
+
+  <% if usuario.ativado %>
+    <td>
+      <%= link_to desativar_path(usuario.id), method: :put, remote:true do %>
+        <span>desativar</span>
+      <% end %>
+    </td>
+  <% else %>
+    <td>
+      <%= link_to ativar_path(usuario.id), method: :put, remote:true do %>
+        <span>ativar</span>
+      <% end %>
+    </td>
+  <% end %>
+</tr>

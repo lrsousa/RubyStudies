@@ -1,0 +1,47 @@
+const int gP = 7;
+const int rC = 8;
+const int rP = 9;
+const int gC = 10;
+const int yC = 11;
+
+void setup() {
+  pinMode(gP,OUTPUT);
+  pinMode(rC,OUTPUT);
+  pinMode(rP,OUTPUT);
+  pinMode(gC,OUTPUT);
+  pinMode(yC,OUTPUT);
+
+  digitalWrite(gC,HIGH);
+  digitalWrite(rP,HIGH);
+  digitalWrite(gP,LOW);
+  digitalWrite(yC,LOW);
+  digitalWrite(rC,LOW);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+  delay(13000);
+  digitalWrite(gC,LOW);
+  for(int i = 0; i < 5; i++ ) {
+    digitalWrite(yC,HIGH);
+    delay(300);
+    digitalWrite(yC,LOW);
+    delay(300);
+  }
+  digitalWrite(rC,HIGH);
+  digitalWrite(rP,LOW);
+  digitalWrite(gP,HIGH);
+
+  delay(7000);
+  for(int i = 0; i < 5; i++ ) {
+    digitalWrite(gP,HIGH);
+    delay(300);
+    digitalWrite(gP,LOW);
+    delay(300);
+  }
+  digitalWrite(gC,HIGH);
+  digitalWrite(rC,LOW);
+  digitalWrite(rP,HIGH);
+}
